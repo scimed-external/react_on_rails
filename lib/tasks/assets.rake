@@ -86,7 +86,7 @@ Uses command defined with ReactOnRails.configuration.npm_build_production_comman
 sh "cd client && `ReactOnRails.configuration.npm_build_production_command`"
     DESC
     task webpack: :environment do
-      if ReactOnRails.configuration.npm_build_production_command.present?
+      if ReactOnRails.configuration.npm_build_production_command.present? && File.exist?('./client') && File.directory?('./client')
         sh "cd client && #{ReactOnRails.configuration.npm_build_production_command}"
       end
     end
